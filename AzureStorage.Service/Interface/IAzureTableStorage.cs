@@ -19,7 +19,7 @@ namespace AzureStorage.Service.Interface
         Task DeleteEntityAsync(string category, string id);
 
 
-        Task<List<EmployeeEntity>> Create(EmployeeEntity employeeDetails);
+        Task<List<EmployeeEntity>> CreateTable(EmployeeEntity employeeDetails);
 
     }
     public interface IAzureBlobStorage
