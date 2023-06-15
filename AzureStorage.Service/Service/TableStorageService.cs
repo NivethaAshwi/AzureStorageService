@@ -17,60 +17,6 @@ namespace AzureStorage.Service.Service
 {
     public class TableStorageService : IAzureTableStorage
     {
-        #region
-        //private const string TableName = "EmployeeDetails";
-        //private readonly string _storageConnecctionString;
-        //private readonly string _storageContainerName;
-        //private readonly ILogger<AzureBlobFileService> _logger;
-        //private readonly IConfiguration _config;
-        //public TableStorageService(IConfiguration configuration, ILogger<AzureBlobFileService> logger)
-        //{
-        //    _storageConnecctionString = configuration.GetValue<string>("StorageConnectionString");
-
-        //    _logger = logger;
-        //    _config = configuration;
-        //}
-        //private async Task<TableClient> GetTableClient()
-        //{
-        //    var serviceClient = new TableServiceClient(_config["StorageConnectionString"]);
-        //    var tableClient = serviceClient.GetTableClient(TableName);
-        //    await tableClient.CreateIfNotExistsAsync();
-        //    return tableClient;
-
-        //}
-        //public async Task CreateEmployee(EmployeeEntity employee)
-        //{
-        //    var tableClient = await GetTableClient();
-        //    await tableClient.AddEntityAsync(employee);
-        //    await Save();
-        //}
-        //public async Task DeleteEmployee(string name, string id)
-        //{
-        //    var tableClient = await GetTableClient();
-        //    await tableClient.DeleteEntityAsync(name, id);
-        //    await Save();
-        //}
-        //public async Task<EmployeeEntity>GetAllEmployees(string name, string id)
-        //{
-        //    var tableClient = await GetTableClient();
-        //    return await tableClient.GetEntityAsync<EmployeeEntity>(name,id);
-
-        //}
-        //public async Task Save()
-        //{
-        //    await Save();
-        //}
-        //public async Task<EmployeeEntity> UpdateEmployee(EmployeeEntity employeeDetails)
-        //{
-        //    var tableClient = await GetTableClient();
-        //   await tableClient.UpsertEntityAsync(employeeDetails);
-        //    return employeeDetails;
-
-
-        //}
-        #endregion
-
-
         private const string TableName = "Item";
         private readonly IConfiguration _configuration;
         public TableStorageService(IConfiguration configuration)
@@ -102,12 +48,7 @@ namespace AzureStorage.Service.Service
             var tableClient = await GetTableClient();
             await tableClient.DeleteEntityAsync(category, id);
         }
-
-       
-
-       
-
-        public async Task<List<EmployeeEntity>> Create(EmployeeEntity emp)
+        public async Task<List<EmployeeEntity>> CreateTable(EmployeeEntity emp)
         {
             string _dbCon2 = _configuration.GetValue<string>("StorageConnectionString");
             var account = CloudStorageAccount.Parse(_dbCon2);
