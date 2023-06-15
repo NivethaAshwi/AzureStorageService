@@ -1,0 +1,15 @@
+E:\Myprograms\AzureStorageswithDemoApi\AzureStorage.Service\bin\Debug\net6.0\AzureStorage.Service.deps.json
+E:\Myprograms\AzureStorageswithDemoApi\AzureStorage.Service\bin\Debug\net6.0\AzureStorage.Service.dll
+E:\Myprograms\AzureStorageswithDemoApi\AzureStorage.Service\bin\Debug\net6.0\AzureStorage.Service.pdb
+E:\Myprograms\AzureStorageswithDemoApi\AzureStorage.Service\bin\Debug\net6.0\AzureStorage.Models.dll
+E:\Myprograms\AzureStorageswithDemoApi\AzureStorage.Service\bin\Debug\net6.0\AzureStorage.Models.pdb
+E:\Myprograms\AzureStorageswithDemoApi\AzureStorage.Service\obj\Debug\net6.0\AzureStorage.Service.csproj.AssemblyReference.cache
+E:\Myprograms\AzureStorageswithDemoApi\AzureStorage.Service\obj\Debug\net6.0\AzureStorage.Service.GeneratedMSBuildEditorConfig.editorconfig
+E:\Myprograms\AzureStorageswithDemoApi\AzureStorage.Service\obj\Debug\net6.0\AzureStorage.Service.AssemblyInfoInputs.cache
+E:\Myprograms\AzureStorageswithDemoApi\AzureStorage.Service\obj\Debug\net6.0\AzureStorage.Service.AssemblyInfo.cs
+E:\Myprograms\AzureStorageswithDemoApi\AzureStorage.Service\obj\Debug\net6.0\AzureStorage.Service.csproj.CoreCompileInputs.cache
+E:\Myprograms\AzureStorageswithDemoApi\AzureStorage.Service\obj\Debug\net6.0\AzureStorage.Service.csproj.CopyComplete
+E:\Myprograms\AzureStorageswithDemoApi\AzureStorage.Service\obj\Debug\net6.0\AzureStorage.Service.dll
+E:\Myprograms\AzureStorageswithDemoApi\AzureStorage.Service\obj\Debug\net6.0\refint\AzureStorage.Service.dll
+E:\Myprograms\AzureStorageswithDemoApi\AzureStorage.Service\obj\Debug\net6.0\AzureStorage.Service.pdb
+E:\Myprograms\AzureStorageswithDemoApi\AzureStorage.Service\obj\Debug\net6.0\ref\AzureStorage.Service.dll

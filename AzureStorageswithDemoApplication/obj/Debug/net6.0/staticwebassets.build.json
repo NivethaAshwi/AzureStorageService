@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "yFkWFY7NjlcRQnbHDEXuB3AmPtF9uKzHBL4AlTYZ2BE=",
+  "Source": "AzureStorageswithDemoApplication",
+  "BasePath": "_content/AzureStorageswithDemoApplication",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
