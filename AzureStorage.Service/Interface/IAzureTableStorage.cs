@@ -22,9 +22,9 @@ namespace AzureStorage.Service.Interface
     }
     public interface IAzureBlobStorage
     {
-          Task<Models.BlobStorageModel.BlobResponseDto> UploadAsync(IFormFile file);
+          Task<BlobResponseDto> UploadAsync(IFormFile file);
           Task<BlobDto> DownloadAsync(string blobFileName);
-          Task<Models.BlobStorageModel.BlobResponseDto> DeleteAsync(string blobFileName);
+          Task<BlobResponseDto> DeleteAsync(string blobFileName);
     
 
     }
