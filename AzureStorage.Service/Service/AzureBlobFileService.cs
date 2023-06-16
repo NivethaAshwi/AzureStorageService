@@ -27,8 +27,7 @@ namespace AzureStorage.Service.Service
             _logger = logger;
 
         }
-
-        public async Task<BlobResponseDto> DeleteAsync(string blobFileName)
+       public async Task<BlobResponseDto> DeleteAsync(string blobFileName)
         {
             BlobContainerClient client = new BlobContainerClient(_storageConnecctionString, _storageContainerName);
             BlobClient file = client.GetBlobClient(blobFileName);
@@ -72,7 +71,7 @@ namespace AzureStorage.Service.Service
 
         public async Task<BlobResponseDto> UploadAsync(IFormFile file)
         {
-            BlobResponseDto response = null;
+             BlobResponseDto response = null;
              BlobContainerClient container = new BlobContainerClient(_storageConnecctionString, _storageContainerName);
             try
             {
