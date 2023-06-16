@@ -48,23 +48,74 @@ namespace AzureStorage.Service.Service
             var tableClient = await GetTableClient();
             await tableClient.DeleteEntityAsync(category, id);
         }
-        public async Task<List<EmployeeEntity>> CreateTable(EmployeeEntity emp)
+        private async Task<CloudTable> GetcloudTable()
         {
             string _azureConnection = _configuration.GetValue<string>("StorageConnectionString");
             var account = CloudStorageAccount.Parse(_azureConnection);
             var client = account.CreateCloudTableClient();
             var table = client.GetTableReference("Employee");
             table.CreateIfNotExists();
+            return table;
+        }
+       
+        public async Task<EmployeeEntity>EmployeeData(EmployeeEntity emp)
+        {
             EmployeeEntity employeeEntity = new EmployeeEntity(emp.FirstName, emp.LastName);
             employeeEntity.FirstName = emp.FirstName;
             employeeEntity.LastName = emp.LastName;
-            employeeEntity. PhoneNumber = emp.PhoneNumber;
+            employeeEntity.PhoneNumber = emp.PhoneNumber;
             employeeEntity.Email = emp.Email;
+            return employeeEntity;
+
+        }
+       public async Task<List<EmployeeEntity>> CreateTable(EmployeeEntity emp)
+        {
+            var tableCon = await GetcloudTable();
+            var tableClient = await EmployeeData(emp);
             var query = new TableQuery<EmployeeEntity>();
-            TableOperation insertOperation = TableOperation.Insert(employeeEntity);
-            table.Execute(insertOperation);
-            var list = table.ExecuteQuery(query).ToList();
+            TableOperation insertOperation = TableOperation.Insert(tableClient);
+            tableCon.Execute(insertOperation);
+            var list = tableCon.ExecuteQuery(query).ToList();
             return list;
+        }
+
+        public async Task<List<EmployeeEntity>> GetEmployeeTable()
+        {
+            var condition = TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, "Raj");
+            var query = new TableQuery<EmployeeEntity>().Where(condition);
+            string _azureConnection = _configuration.GetValue<string>("ConnectionStrings:MyAzureTable");
+            var account = CloudStorageAccount.Parse(_azureConnection);
+            var client = account.CreateCloudTableClient();
+            var table = client.GetTableReference("Employee");
+            var lst = table.ExecuteQuery(query);
+            return lst.ToList();
+        }
+
+        public async Task<List<EmployeeEntity>> UpdateEmployeeTable(EmployeeEntity employeeDetails)
+        {
+               var tableCon = await GetcloudTable();
+                var tableClient = await EmployeeData(employeeDetails);
+                var query = new TableQuery<EmployeeEntity>();
+                TableOperation insertOperation = TableOperation.InsertOrMerge(tableClient);
+            tableCon.Execute(insertOperation);
+                var list = tableCon.ExecuteQuery(query);
+                return list.ToList();
+
+           
+        }
+
+        public async Task<List<EmployeeEntity>> DeleteEmployeeTable(EmployeeEntity employeeDetails)
+        {
+
+            var tableCon = await GetcloudTable();
+            var tableClient = await EmployeeData(employeeDetails);
+            tableClient.ETag = "*"; // wildcard 
+            var query = new TableQuery<EmployeeEntity>();
+            TableOperation insertOperation = TableOperation.Delete(tableClient);
+            tableCon.Execute(insertOperation);
+            var lst = tableCon.ExecuteQuery(query);
+            return lst.ToList();
+
         }
     }
 }
