@@ -13,10 +13,10 @@ namespace AzureStorage.Service.Interface
 {
     public interface IAzureTableStorage
     {
-        Task<Models.TableStorageModel.GroceryItemEntity> GetEntityAsync(string category, string id);
-        Task<Models.TableStorageModel.GroceryItemEntity> UpsertEntityAsync(Models.TableStorageModel.GroceryItemEntity employeeDetails);
-        Task DeleteEntityAsync(string category, string id);
-
+       
+        Task<GroceryItemEntity> GetGroceryDetails(string category, string id);
+        Task<GroceryItemEntity> GrocerryEntityDetails(GroceryItemEntity employeeDetails);
+        Task DeleteGroceryDetails(string category, string id);
 
         Task<List<EmployeeEntity>> CreateTable(EmployeeEntity employeeDetails);
 
