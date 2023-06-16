@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 
 namespace AzureStorage.Models.TableStorageModel
 {
-   
-        public class GroceryItemEntity : ITableEntity
+     public class GroceryItemEntity : ITableEntity
         {
             public string Id { get; set; }
             public string Name { get; set; }
@@ -20,5 +19,4 @@ namespace AzureStorage.Models.TableStorageModel
             public DateTimeOffset? Timestamp { get; set; }
             public ETag ETag { get; set; }
         }
-    
-}
+    }
