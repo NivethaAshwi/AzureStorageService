@@ -15,8 +15,8 @@ namespace AzureStorageswithDemoApplication.Controllers
         {
             _storage = blobStorage;
         }
-        [HttpPost(nameof(Upload))]
-        public async Task<IActionResult> Upload(IFormFile file)
+        [HttpPost(nameof(UploadFile))]
+        public async Task<IActionResult> UploadFile(IFormFile file)
         {
             BlobResponseDto? response = await _storage.UploadAsync(file);
              if (response.Error == true)
@@ -30,7 +30,7 @@ namespace AzureStorageswithDemoApplication.Controllers
             
         }
         [HttpGet("{filename}")]
-        public async Task<IActionResult> Download(string filename)
+        public async Task<IActionResult> DownloadFile(string filename)
         {
             BlobDto? file = await _storage.DownloadAsync(filename);
             if(file == null)
@@ -43,7 +43,7 @@ namespace AzureStorageswithDemoApplication.Controllers
             }
         }
         [HttpDelete("filename")]
-        public async Task<IActionResult> Delete(String filename)
+        public async Task<IActionResult> DeleteFile(String filename)
         {
             BlobResponseDto response = await _storage.DeleteAsync(filename);
           
