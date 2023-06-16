@@ -14,7 +14,6 @@ namespace AzureStorage.Service.Interface
     public interface IAzureTableStorage
     {
         Task<Models.TableStorageModel.GroceryItemEntity> GetEntityAsync(string category, string id);
-        
         Task<Models.TableStorageModel.GroceryItemEntity> UpsertEntityAsync(Models.TableStorageModel.GroceryItemEntity employeeDetails);
         Task DeleteEntityAsync(string category, string id);
 
