@@ -16,7 +16,6 @@ namespace AzureStorage.Models.TableStorageModel
             this.PartitionKey = lastName; this.RowKey = firstname;
         }
         public EmployeeEntity() { }
-
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
