@@ -17,7 +17,6 @@ namespace AzureStorage.Service.Interface
         Task<GroceryItemEntity> GetGroceryDetails(string category, string id);
         Task<GroceryItemEntity> GrocerryEntityDetails(GroceryItemEntity employeeDetails);
         Task DeleteGroceryDetails(string category, string id);
-
         Task<List<EmployeeEntity>> CreateTable(EmployeeEntity employeeDetails);
 
     }
@@ -25,7 +24,7 @@ namespace AzureStorage.Service.Interface
     {
           Task<Models.BlobStorageModel.BlobResponseDto> UploadAsync(IFormFile file);
           Task<BlobDto> DownloadAsync(string blobFileName);
-         Task<Models.BlobStorageModel.BlobResponseDto> DeleteAsync(string blobFileName);
+          Task<Models.BlobStorageModel.BlobResponseDto> DeleteAsync(string blobFileName);
     
 
     }
