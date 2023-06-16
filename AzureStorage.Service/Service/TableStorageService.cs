@@ -17,36 +17,10 @@ namespace AzureStorage.Service.Service
 {
     public class TableStorageService : IAzureTableStorage
     {
-        private const string TableName = "Item";
         private readonly IConfiguration _configuration;
         public TableStorageService(IConfiguration configuration)
         {
             _configuration = configuration;
-        }
-       private async Task<TableClient> GetTableClient()
-        {
-            var serviceClient = new TableServiceClient(_configuration["StorageConnectionString"]);
-            var tableClient = serviceClient.GetTableClient(TableName);
-            await tableClient.CreateIfNotExistsAsync();
-            return tableClient;
-        }
-        public async  Task<GroceryItemEntity> GetGroceryDetails(string category, string id)
-        {
-            var tableClient = await GetTableClient();
-            return await tableClient.GetEntityAsync<GroceryItemEntity>(category, id);
-        }
-
-        public async Task<GroceryItemEntity> GrocerryEntityDetails(GroceryItemEntity entity)
-        {
-            var tableClient = await GetTableClient();
-            await tableClient.UpsertEntityAsync(entity);
-            return entity;
-        }
-
-        public async Task DeleteGroceryDetails(string category, string id)
-        {
-            var tableClient = await GetTableClient();
-            await tableClient.DeleteEntityAsync(category, id);
         }
         private async Task<CloudTable> GetcloudTable()
         {
@@ -57,8 +31,7 @@ namespace AzureStorage.Service.Service
             table.CreateIfNotExists();
             return table;
         }
-       
-        public async Task<EmployeeEntity>EmployeeData(EmployeeEntity emp)
+       public async Task<EmployeeEntity>EmployeeData(EmployeeEntity emp)
         {
             EmployeeEntity employeeEntity = new EmployeeEntity(emp.FirstName, emp.LastName);
             employeeEntity.FirstName = emp.FirstName;
