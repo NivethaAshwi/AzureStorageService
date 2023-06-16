@@ -50,14 +50,11 @@ namespace AzureStorage.Service.Service
         }
         public async Task<List<EmployeeEntity>> CreateTable(EmployeeEntity emp)
         {
-            string _dbCon2 = _configuration.GetValue<string>("StorageConnectionString");
-            var account = CloudStorageAccount.Parse(_dbCon2);
+            string _azureConnection = _configuration.GetValue<string>("StorageConnectionString");
+            var account = CloudStorageAccount.Parse(_azureConnection);
             var client = account.CreateCloudTableClient();
-
             var table = client.GetTableReference("Employee");
-
             table.CreateIfNotExists();
-
             EmployeeEntity employeeEntity = new EmployeeEntity(emp.FirstName, emp.LastName);
             employeeEntity.FirstName = emp.FirstName;
             employeeEntity.LastName = emp.LastName;
@@ -65,8 +62,6 @@ namespace AzureStorage.Service.Service
             employeeEntity.Email = emp.Email;
             var query = new TableQuery<EmployeeEntity>();
             TableOperation insertOperation = TableOperation.Insert(employeeEntity);
-
-
             table.Execute(insertOperation);
             var list = table.ExecuteQuery(query).ToList();
             return list;
