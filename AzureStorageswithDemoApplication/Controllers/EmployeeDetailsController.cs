@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using AzureStorage.Service;
 using AzureStorage.Service.Service;
@@ -20,22 +20,32 @@ namespace AzureStorageswithDemoApplication.Controllers
     {
         
         private readonly IConfiguration _config;
-        private readonly IAzureTableStorage __storageService;
-        public EmployeeDetailsController(IConfiguration configuration,IAzureTableStorage azureTable)
+        private readonly IAzureTableStorage _tableStorageService;
+        private readonly ILogger<EmployeeDetailsController> _logger;
+        public EmployeeDetailsController(IConfiguration configuration,IAzureTableStorage azureTable, ILogger<EmployeeDetailsController> logger)
         {
           
             _config = configuration;
-            __storageService = azureTable;
+            _tableStorageService = azureTable;
+            _logger = logger;
         }
         [HttpPost]
-        public async Task <IActionResult> Post([FromBody] EmployeeEntity emp)
+        public async Task <IActionResult> CreateAzureTable([FromBody] EmployeeEntity emp)
         {
-
-            // Method 2
-            var createdEntity = await __storageService.Create(emp);
-            return CreatedAtAction(nameof(Post), createdEntity);
+            try
+            {
+                var createdEntity = await _tableStorageService.CreateTable(emp);
+                return CreatedAtAction(nameof(CreateAzureTable), createdEntity);
+            }
+            catch(Exception ex)
+            {
+                _logger.LogError($"Error try to add New Table :{ex.StackTrace}{ex.InnerException}");
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                                    "Error creating new Table record");
+            }
 
         }
+      
 
 
     }
