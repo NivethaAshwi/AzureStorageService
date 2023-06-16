@@ -97,12 +97,10 @@ namespace AzureStorage.Service.Service
                 var tableClient = await EmployeeData(employeeDetails);
                 var query = new TableQuery<EmployeeEntity>();
                 TableOperation insertOperation = TableOperation.InsertOrMerge(tableClient);
-            tableCon.Execute(insertOperation);
+               tableCon.Execute(insertOperation);
                 var list = tableCon.ExecuteQuery(query);
                 return list.ToList();
-
-           
-        }
+          }
 
         public async Task<List<EmployeeEntity>> DeleteEmployeeTable(EmployeeEntity employeeDetails)
         {
