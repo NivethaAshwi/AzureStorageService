@@ -24,7 +24,6 @@ builder.Services.AddCors(Options =>
 });
 #endregion
 var connectionstring = builder.Configuration.GetConnectionString("StorageConnectionString");
-//builder.Services.AddTransient<IAzureTableStorage, TableStorageService>();
 builder.Services.AddTransient<IAzureBlobStorage, AzureBlobFileService>();
 builder.Services.AddScoped<IAzureTableStorage, TableStorageService>();
 builder.Services.AddScoped(_ =>
@@ -41,7 +40,6 @@ builder.Host.UseSerilog((context, config) =>
     }
 });
 #endregion
-//builder.Services.AddScoped<IFileService, AzureBlobFileService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
